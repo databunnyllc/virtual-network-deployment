@@ -2,6 +2,6 @@
 # Resource group name: webservers.rg, us-east-1
 
 resource "azurerm_resource_group" "webservers-rg" {
-    name = "webserver-rg"
-    location = "East US"
+  name     = var.resource-group-name
+  location = var.locations[0]["north_central_us"]
 }
