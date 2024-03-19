@@ -65,7 +65,7 @@ variable "subnet-names" {
     database_subnet_name  = string
   }))
   default = [{
-    gateway_subnet_name   = "gateway_subnet"
+    gateway_subnet_name   = "GatewaySubnet"
     webserver_subnet_name = "webserver-subnet"
     database_subnet_name  = "database-subnet"
   }]
