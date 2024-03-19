@@ -2,7 +2,7 @@
 
 variable "company_name" {
   type    = string
-  default = "World Construction Inc"
+  default = "Dave's Construction"
 }
 
 # US and Canada AZs
