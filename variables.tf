@@ -34,6 +34,7 @@ variable "resource-group-name" {
 variable "security-groups" {
   type = list(string)
   default = [
+    "gateway-subnet-sg",
     "webserver-subnet-sg",
     "database-subnet-sg"
   ]
@@ -45,22 +46,26 @@ variable "vnet-ip-addresses" {
   description = "The ip addresses used in the VNET."
   type = list(object({
     addresses_space         = string
+    gateway_subnet_prefix   = string
     webserver_subnet_prefix = string
     database_subnet_prefix  = string
   }))
   default = [{
     addresses_space         = "10.0.0.0/16"
-    webserver_subnet_prefix = "10.0.1.0/24"
-    database_subnet_prefix  = "10.0.2.0/24"
+    gateway_subnet_prefix   = "10.0.1.0/24"
+    webserver_subnet_prefix = "10.0.2.0/24"
+    database_subnet_prefix  = "10.0.3.0/24"
   }]
 }
 
 variable "subnet-names" {
   type = list(object({
+    gateway_subnet_name   = string
     webserver_subnet_name = string
     database_subnet_name  = string
   }))
   default = [{
+    gateway_subnet_name   = "gateway_subnet"
     webserver_subnet_name = "webserver-subnet"
     database_subnet_name  = "database-subnet"
   }]
