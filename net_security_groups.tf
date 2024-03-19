@@ -45,7 +45,7 @@ resource "azurerm_network_security_group" "webserver-subnet-sg" {
 resource "azurerm_network_security_group" "database-subnet-sg" {
   name                = var.security-groups[2]
   location            = var.locations[0].north_central_us
-  resource_group_name = azurerm_resource_group.webservers-rg.name
+  resource_group_name = var.resource-group-name
 
   # Create name for security group
   tags = {

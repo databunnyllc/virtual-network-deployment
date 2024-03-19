@@ -20,6 +20,13 @@ resource "azurerm_subnet" "webserver-subnet" {
   address_prefixes     = [var.vnet-ip-addresses[0].webserver_subnet_prefix]
 }
 
+# Associate Webserver subnet with nsg
+
+resource "azurerm_subnet_network_security_group_association" "webserver-nsg-asso" {
+  subnet_id                 = azurerm_subnet.webserver-subnet.id
+  network_security_group_id = azurerm_network_security_group.webserver-subnet-sg.id
+}
+
 # Creating the database subnet 
 
 resource "azurerm_subnet" "database-subnet" {
@@ -27,4 +34,11 @@ resource "azurerm_subnet" "database-subnet" {
   resource_group_name  = var.resource-group-name
   virtual_network_name = var.company_name
   address_prefixes     = [var.vnet-ip-addresses[0].database_subnet_prefix]
+}
+
+# Associate Database subnet with nsg
+
+resource "azurerm_subnet_network_security_group_association" "database-nsg-asso" {
+  subnet_id                 = azurerm_subnet.database-subnet.id
+  network_security_group_id = azurerm_network_security_group.database-subnet-sg.id
 }
