@@ -10,7 +10,7 @@ resource "azurerm_virtual_network_gateway" "vng" {
 
   active_active = false
   enable_bgp    = false
-  sku           = "Standard"
+  sku           = "VpnGw1"
 
   ip_configuration {
     name                          = "vnetGatewayConfig"
