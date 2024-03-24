@@ -3,5 +3,5 @@
 
 resource "azurerm_resource_group" "webservers-rg" {
   name     = var.resource-group-name
-  location = var.locations[0]["north_central_us"]
+  location = var.locations[0].east_us
 }

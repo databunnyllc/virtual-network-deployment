@@ -2,7 +2,7 @@
 
 resource "azurerm_virtual_network_gateway" "vng" {
   name                = "virtual-network-gateway"
-  location            = var.locations[0].north_central_us
+  location            = var.locations[0].east_us
   resource_group_name = var.resource-group-name
 
   type     = "Vpn"
@@ -10,7 +10,8 @@ resource "azurerm_virtual_network_gateway" "vng" {
 
   active_active = true
   enable_bgp    = false
-  sku           = "VpnGw2"
+  sku           = "VpnGw3"
+  generation    = "Generation2"
 
   ip_configuration {
     name                          = "vnetGatewayConfig"
@@ -19,7 +20,10 @@ resource "azurerm_virtual_network_gateway" "vng" {
     subnet_id                     = azurerm_subnet.gateway-subnet.id
   }
 
-  vpn_client_configuration {
-    address_space = ["10.2.0.0/24"]
+  ip_configuration {
+    name                          = "vnetGatewayConfig2"
+    public_ip_address_id          = azurerm_public_ip.vng-public-ip-2.id
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = azurerm_subnet.gateway-subnet.id
   }
 }

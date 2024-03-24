@@ -3,7 +3,7 @@
 
 resource "azurerm_network_security_group" "gateway-subnet-sg" {
   name                = var.security-groups[0]
-  location            = var.locations[0].north_central_us
+  location            = var.locations[0].east_us
   resource_group_name = var.resource-group-name
 
   # Allow all traffic inbound
@@ -31,7 +31,7 @@ resource "azurerm_network_security_group" "gateway-subnet-sg" {
 
 resource "azurerm_network_security_group" "webserver-subnet-sg" {
   name                = var.security-groups[1]
-  location            = var.locations[0].north_central_us
+  location            = var.locations[0].east_us
   resource_group_name = var.resource-group-name
 
   # Create name for security group
@@ -44,7 +44,7 @@ resource "azurerm_network_security_group" "webserver-subnet-sg" {
 
 resource "azurerm_network_security_group" "database-subnet-sg" {
   name                = var.security-groups[2]
-  location            = var.locations[0].north_central_us
+  location            = var.locations[0].east_us
   resource_group_name = var.resource-group-name
 
   # Create name for security group
